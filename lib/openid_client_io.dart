@@ -61,6 +61,7 @@ class Authenticator {
     Uri? redirectUri,
     String? redirectMessage,
     String? prompt,
+    String? codeVerifier,
     Map<String, String>? additionalParameters,
     this.htmlPage,
   })  : assert(
@@ -70,7 +71,7 @@ class Authenticator {
         redirectMessage = redirectMessage ?? 'You can now close this window',
         flow = redirectUri == null
             ? Flow.authorizationCodeWithPKCE(client,
-                prompt: prompt, additionalParameters: additionalParameters)
+                prompt: prompt, additionalParameters: additionalParameters, codeVerifier: codeVerifier)
             : Flow.authorizationCode(client,
                 prompt: prompt, additionalParameters: additionalParameters)
           ..scopes.addAll(scopes)
