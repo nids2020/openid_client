@@ -69,7 +69,7 @@ class Authenticator {
           'You can only use one variable htmlPage (give entire html) or redirectMessage (only string message)',
         ),
         redirectMessage = redirectMessage ?? 'You can now close this window',
-        flow = redirectUri == null
+        flow = codeVerifier != null
             ? Flow.authorizationCodeWithPKCE(client,
                 prompt: prompt, additionalParameters: additionalParameters, codeVerifier: codeVerifier)
             : Flow.authorizationCode(client,
