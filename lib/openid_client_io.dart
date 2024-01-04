@@ -71,7 +71,7 @@ class Authenticator {
         redirectMessage = redirectMessage ?? 'You can now close this window',
         flow = codeVerifier != null
             ? Flow.authorizationCodeWithPKCE(client,
-                prompt: prompt, additionalParameters: additionalParameters, scope: scope, codeVerifier: codeVerifier)
+                prompt: prompt, additionalParameters: additionalParameters, scopes: scopes, codeVerifier: codeVerifier)
             : Flow.authorizationCode(client,
                 prompt: prompt, additionalParameters: additionalParameters)
           ..scopes.addAll(scopes)
